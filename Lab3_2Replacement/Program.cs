@@ -39,8 +39,8 @@ namespace Lab3_2Replacement
         {
             //do
             {
-                Console.WriteLine("Deli Counter Menu");
-
+                Console.WriteLine("Welcome to Asia's Deli");
+                Console.WriteLine();
 
 
                 //display a list of menu items and prices
@@ -52,10 +52,14 @@ namespace Lab3_2Replacement
                 // Use a Dictionary that maps strings to prices. Start out with three or four menu items hardcoded.
                 Dictionary<string, double> menuItems = new Dictionary<string, double>();
 
-                menuItems["Salad"] = 7.50;
-                menuItems["Pizza"] = 5.50;
-                menuItems["Fruit"] = 4.00;
-                menuItems["Smoothie"] = 3.50;
+                //menuItems["Salad"] = 7.50;
+                //menuItems["Pizza"] = 5.50;
+                //menuItems["Fruit"] = 4.00;
+                //menuItems["Smoothie"] = 3.50;
+                menuItems.Add("salad", 7.50);
+                menuItems.Add("pizza", 5.50);
+                menuItems.Add("fruit", 4.00);
+                menuItems.Add("smoothie", 7.50);
 
 
                 //List the menu when the program begins
@@ -79,15 +83,15 @@ namespace Lab3_2Replacement
                 {
                     Console.WriteLine("Would you like to modify the menu?");
                     Console.Write("Options: Please enter 'A' to add, 'R' to remove, 'C' to change an item price or 'Q' to quit: ");
-                    string userResponse = Console.ReadLine();
-                    userResponse = userResponse.ToUpper();
+                    string userResponse = Console.ReadLine().ToUpper();
+                    
                     Console.WriteLine();
 
                     //If the user wants to add a new item, ask them what the item name is and the price
                     if (userResponse == "A")
                     {
                         Console.Write("Please enter item name: ");
-                        string itemName = Console.ReadLine();
+                        string itemName = Console.ReadLine().ToLower();
                         Console.Write("Plese enter item price: ");
                         double price = double.Parse(Console.ReadLine());
                         //Console.WriteLine(itemName);
@@ -110,7 +114,7 @@ namespace Lab3_2Replacement
                     {
 
                         Console.Write("Please enter the name of the item you wish to remove: ");
-                        string itemRem = Console.ReadLine();
+                        string itemRem = Console.ReadLine().ToLower();
                         menuItems.Remove(itemRem);
                         Console.WriteLine($"{itemRem} has been removed from the list");
                         Console.WriteLine();
@@ -128,7 +132,7 @@ namespace Lab3_2Replacement
                     else if (userResponse == "C")
                     {
                         Console.Write("Please enter the name of the item that you wish to change: ");
-                        string itemName = Console.ReadLine();
+                        string itemName = Console.ReadLine().ToLower();
 
 
 
@@ -164,6 +168,11 @@ namespace Lab3_2Replacement
                     else if (userResponse == "Q")
                     {
                         Console.WriteLine("Thank you for using the menu tool. Have a great day!");
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a vaild response (A, C, R or Q)");
                     }
                 } while (Continue());
 
